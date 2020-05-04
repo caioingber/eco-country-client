@@ -1,5 +1,10 @@
 <template>
   <div>
+    <CountryTile
+      v-for="(location, i) in countries"
+      :key="i"
+      :country="location"
+    />
     <div v-for="(location, i) in countries" :key="i">
       {{ location.country.name }}
     </div>
@@ -7,8 +12,10 @@
 </template>
 
 <script>
+import CountryTile from "@/components/CountryTile.vue";
 export default {
   name: "Region",
+  components: { CountryTile },
   data() {
     return {
       localUrl: "http://localhost:8000/ecos",
