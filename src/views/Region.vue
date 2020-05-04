@@ -11,13 +11,19 @@ export default {
   name: "Region",
   data() {
     return {
-      localUrl: "http://localhost:8000/ecos?region=",
+      localUrl: "http://localhost:8000/ecos",
       countries: [],
     };
   },
   computed: {
     regionData() {
-      return this.localUrl + `${this.$route.params.region}`;
+      let regionUrl;
+      if (this.$route.params.region === "All") {
+        regionUrl = this.localUrl;
+      } else {
+        regionUrl = this.localUrl + `?region=${this.$route.params.region}`;
+      }
+      return regionUrl;
     },
   },
   created() {
