@@ -7,6 +7,21 @@
     <router-view />
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      localUrl: "http://localhost:8000/ecos",
+      countries: [],
+    };
+  },
+  // created() {
+  //   fetch(this.localUrl)
+  //     .then((res) => res.json())
+  //     .then((data) => (this.countries = data));
+  // },
+};
+</script>
 
 <style lang="scss">
 #app {

@@ -1,18 +1,47 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HomeTile v-for="(region, i) in regions" :key="i" :region="region" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import HomeTile from "@/components/HomeTile.vue";
 
 export default {
   name: "Home",
+  data() {
+    return {
+      regions: [
+        {
+          name: "Americas",
+          img: "",
+        },
+        {
+          name: "Europe",
+          img: "",
+        },
+        {
+          name: "Oceania",
+          img: "",
+        },
+        {
+          name: "Africa",
+          img: "",
+        },
+        {
+          name: "Asia",
+          img: "",
+        },
+        {
+          name: "All",
+          img: "",
+        },
+      ],
+    };
+  },
   components: {
-    HelloWorld
-  }
+    HomeTile,
+  },
 };
 </script>
