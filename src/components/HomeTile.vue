@@ -43,11 +43,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../global.scss";
-a {
-  height: 300px;
-  @include flex(center, stretch, column);
-  position: relative;
-}
+
 .tile {
   h1 {
     pointer-events: none;
@@ -60,8 +56,9 @@ a {
   text-shadow: 2px 2px rgb(15, 67, 15);
   min-height: 300px;
   border: 3px solid #000;
+  position: relative;
   &__overlay {
-    @include fill(300px, 100%);
+    @include fill(100%, 100%);
     position: absolute;
     pointer-events: none;
     opacity: 0;

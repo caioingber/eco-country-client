@@ -1,6 +1,7 @@
 <template>
   <div class="country">
     <h1>{{ country.country.name }}</h1>
+    <router-link :to="back">back to region</router-link>
   </div>
 </template>
 
@@ -13,6 +14,9 @@ export default {
         (country) => country.country.name == this.$route.params.country
       );
       return filtered[0];
+    },
+    back() {
+      return "/region/" + this.$route.params.region;
     },
   },
 };

@@ -31,11 +31,7 @@ export default {
   },
   computed: {
     updateSearch() {
-      let modified = this.search;
-      if (this.search.length > 0) {
-        modified = this.search[0].toUpperCase() + this.search.substring(1);
-      }
-      return modified;
+      return this.search.toLowerCase();
     },
     regionCountries() {
       let filtered;
@@ -55,7 +51,7 @@ export default {
         filtered = filtered.filter((country) => country.biocapacityReserve > 0);
       }
       return filtered.filter((country) =>
-        country.country.name.includes(this.updateSearch)
+        country.country.name.toLowerCase().includes(this.updateSearch)
       );
     },
   },
