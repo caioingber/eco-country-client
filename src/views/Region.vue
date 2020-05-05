@@ -1,42 +1,29 @@
 <template>
   <div>
-    <CountryTile
+    <div v-for="(country, i) in regionCountries" :key="i">
+      {{ country.country.name }}
+    </div>
+    <!-- <CountryTile
       v-for="(location, i) in countries"
       :key="i"
       :country="location"
-    />
-    <div v-for="(location, i) in countries" :key="i">
-      {{ location.country.name }}
-    </div>
+    /> -->
   </div>
 </template>
 
 <script>
-import CountryTile from "@/components/CountryTile.vue";
+// import CountryTile from "@/components/CountryTile.vue";
 export default {
   name: "Region",
-  components: { CountryTile },
-  data() {
-    return {
-      localUrl: "http://localhost:8000/ecos",
-      countries: [],
-    };
-  },
   computed: {
-    regionData() {
-      let regionUrl;
-      if (this.$route.params.region === "All") {
-        regionUrl = this.localUrl;
-      } else {
-        regionUrl = this.localUrl + `?region=${this.$route.params.region}`;
-      }
-      return regionUrl;
+    regionCountries() {
+      return this.$store.state.countries.filter(
+        (country) => country.region === this.$route.params.region
+      );
     },
   },
   created() {
-    fetch(this.regionData)
-      .then((res) => res.json())
-      .then((data) => (this.countries = data));
+    this.$store.dispatch("loadCountries");
   },
 };
 </script>
