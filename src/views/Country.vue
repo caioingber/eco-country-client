@@ -1,13 +1,16 @@
 <template>
-  <div>
-    {{ info.country.name }}
-  </div>
+  <div>Test</div>
 </template>
 
 <script>
 export default {
   props: ["info"],
   name: "Country",
+  computed: {
+    countryData() {
+      return this.$store.state.countries;
+    },
+  },
 };
 </script>
 

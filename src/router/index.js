@@ -18,13 +18,14 @@ const routes = [
     component: Region,
   },
   {
-    path: "/country/:country",
+    path: "/region/:region/country/:country",
     name: "Country",
     component: Country,
   },
 ];
 
 const router = new VueRouter({
+  mode: "history",
   routes,
 });
 

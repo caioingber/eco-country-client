@@ -1,8 +1,7 @@
 <template>
-  <router-link :to="path" :info="country">
+  <router-link :to="path">
     <div>
       <p>{{ country.country.name }}</p>
-      <p>{{ country.country.region }}</p>
     </div>
   </router-link>
 </template>
@@ -12,7 +11,7 @@ export default {
   props: ["country"],
   data() {
     return {
-      path: "country/" + this.country.country.name,
+      path: this.$route.fullPath + "/country/" + this.country.country.name,
     };
   },
 };

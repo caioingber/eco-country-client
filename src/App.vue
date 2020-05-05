@@ -1,25 +1,15 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <div id="nav"><router-link to="/">Home</router-link> |</div>
     <router-view />
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      localUrl: "http://localhost:8000/ecos",
-      countries: [],
-    };
+  data() {},
+  created() {
+    this.$store.dispatch("loadCountries");
   },
-  // created() {
-  //   fetch(this.localUrl)
-  //     .then((res) => res.json())
-  //     .then((data) => (this.countries = data));
-  // },
 };
 </script>
 
