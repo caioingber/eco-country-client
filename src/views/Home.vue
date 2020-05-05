@@ -49,6 +49,13 @@ export default {
 @import "../global.scss";
 .home {
   min-height: 80vh;
-  @include grid(2, 3, 0);
+  background-color: #000;
+  @include grid(2, 3);
+  @include tablet {
+    @include grid(3, 2);
+  }
+  @include mobile {
+    @include grid(6, 1);
+  }
 }
 </style>

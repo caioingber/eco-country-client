@@ -18,11 +18,6 @@ export default {
         this.$store.commit("updateSearch", value);
       },
     },
-    // filteredCountries() {
-    //   return this.$store.state.countries.filter((country) =>
-    //     country.country.name.includes(this.filter)
-    //   );
-    // },
   },
 };
 </script>

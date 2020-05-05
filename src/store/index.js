@@ -7,15 +7,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     countries: [],
-    filteredCountries: [],
-    search: "",
   },
   mutations: {
     setCountries(state, payload) {
       state.countries = payload;
-    },
-    updateSearch(state, search) {
-      state.search = search;
     },
   },
   actions: {
