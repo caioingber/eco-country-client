@@ -14,27 +14,27 @@ export default {
       regions: [
         {
           name: "Americas",
-          img: "",
+          img: "americas.jpeg",
         },
         {
           name: "Europe",
-          img: "",
+          img: "europe.jpeg",
         },
         {
           name: "Oceania",
-          img: "",
+          img: "oceania.jpeg",
         },
         {
           name: "Africa",
-          img: "",
+          img: "africa.jpeg",
         },
         {
           name: "Asia",
-          img: "",
+          img: "asia.jpeg",
         },
         {
           name: "All",
-          img: "",
+          img: "earth.jpeg",
         },
       ],
     };

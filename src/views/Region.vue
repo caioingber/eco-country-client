@@ -70,7 +70,7 @@ export default {
       this.deficit = !this.deficit;
       this.deficit
         ? (this.deficitText = "Show All")
-        : (this.deficitText = "Reserve");
+        : (this.deficitText = "Deficit");
     },
   },
 };
