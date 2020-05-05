@@ -1,24 +1,28 @@
 <template>
   <div class="filter">
     <input type="text" v-model="filter" placeholder="insert" />
-    <p>{{ filter }}</p>
+    <p>{{ search }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: "Search",
-  data() {
-    return {
-      filter: "",
-    };
-  },
+  data() {},
   computed: {
-    filteredCountries() {
-      return this.$store.state.countries.filter((country) =>
-        country.country.name.includes(this.filter)
-      );
+    search: {
+      get() {
+        return this.$store.state.search;
+      },
+      set(value) {
+        this.$store.commit("updateSearch", value);
+      },
     },
+    // filteredCountries() {
+    //   return this.$store.state.countries.filter((country) =>
+    //     country.country.name.includes(this.filter)
+    //   );
+    // },
   },
 };
 </script>
