@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import HomeTile from "@/components/HomeTile.vue";
 
 export default {

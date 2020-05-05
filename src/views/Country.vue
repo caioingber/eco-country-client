@@ -1,10 +1,11 @@
 <template>
-  <div>Test</div>
+  <div class="country">
+    <h1>{{ country.country.name }}</h1>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ["info"],
   name: "Country",
   computed: {
     country() {
@@ -17,4 +18,4 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped></style>

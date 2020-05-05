@@ -1,5 +1,6 @@
 <template>
   <div class="region">
+    <Search />
     <CountryTile
       v-for="(location, i) in regionCountries"
       :key="i"
@@ -10,10 +11,10 @@
 
 <script>
 import CountryTile from "@/components/CountryTile.vue";
-
+import Search from "../components/Search.vue";
 export default {
   name: "Region",
-  components: { CountryTile },
+  components: { CountryTile, Search },
   computed: {
     regionCountries() {
       if (this.$route.params.region == "All") {
