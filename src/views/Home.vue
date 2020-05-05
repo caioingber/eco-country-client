@@ -44,3 +44,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import "../global.scss";
+.home {
+  min-height: 80vh;
+  @include grid(2, 3, 0);
+}
+</style>
