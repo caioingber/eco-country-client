@@ -34,7 +34,7 @@
           <span v-else class="fail"> &times;</span>
         </div>
         <div class="category">Grade:</div>
-        <div class="value">{{ grade }}</div>
+        <div class="value grade" :style="styleGrade">{{ grade }}</div>
       </div>
     </div>
     <router-link :to="back">back to region</router-link>
@@ -46,6 +46,11 @@ import CountryTile from "../components/CountryTile";
 export default {
   components: { CountryTile },
   name: "Country",
+  data() {
+    return {
+      color: "red",
+    };
+  },
   computed: {
     country() {
       let filtered = this.$store.state.countries.filter(
@@ -67,12 +72,14 @@ export default {
     },
     scoreGdp() {
       let gdp = this.country.gdpPerCapita;
-      gdp = parseFloat(
-        gdp
-          .substring(1)
-          .split(",")
-          .join("")
-      );
+      if (gdp) {
+        gdp = parseFloat(
+          gdp
+            .substring(1)
+            .split(",")
+            .join("")
+        );
+      }
       return gdp > 17100 ? true : false;
     },
     grade() {
@@ -83,25 +90,19 @@ export default {
         this.scoreGdp,
       ];
       let score = 0;
-      let grade;
       categories.forEach((cat) => (cat ? score++ : null));
-      switch (score) {
-        case 1:
-          grade = "D";
-          break;
-        case 2:
-          grade = "C";
-          break;
-        case 3:
-          grade = "B";
-          break;
-        case 4:
-          grade = "A";
-          break;
-        default:
-          grade = "F";
-      }
+      let grades = ["F", "D", "C", "B", "A"];
+      let grade = grades[score];
       return grade;
+    },
+    styleGrade() {
+      let style;
+      if (this.grade == "D" || this.grade == "F") {
+        style = {
+          color: "red",
+        };
+      }
+      return style;
     },
   },
 };
@@ -131,11 +132,11 @@ export default {
       width: 75%;
     }
     width: 50%;
-    @include grid(5, 6);
+    @include grid(6, 6);
     & > * {
       @include flex(center, center, row);
       border: 1px solid black;
-      padding: 1em;
+      padding: 0.5em;
     }
     .category {
       grid-column: 1 / span 3;
@@ -144,7 +145,7 @@ export default {
       grid-column: 4 / span 3;
       .fail,
       .pass {
-        padding-left: 5px;
+        padding-left: 10px;
       }
       .pass {
         font-size: 20px;
@@ -155,6 +156,11 @@ export default {
         // padding-bottom: 5px;
         color: red;
       }
+    }
+    .grade {
+      color: green;
+      font-weight: 700;
+      font-size: 20px;
     }
   }
 }
