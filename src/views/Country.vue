@@ -33,6 +33,8 @@
           <span v-if="scoreBio" class="pass">&#x2714; </span>
           <span v-else class="fail"> &times;</span>
         </div>
+        <div class="category">Grade:</div>
+        <div class="value">{{ grade }}</div>
       </div>
     </div>
     <router-link :to="back">back to region</router-link>
@@ -81,8 +83,25 @@ export default {
         this.scoreGdp,
       ];
       let score = 0;
+      let grade;
       categories.forEach((cat) => (cat ? score++ : null));
-      return score;
+      switch (score) {
+        case 1:
+          grade = "D";
+          break;
+        case 2:
+          grade = "C";
+          break;
+        case 3:
+          grade = "B";
+          break;
+        case 4:
+          grade = "A";
+          break;
+        default:
+          grade = "F";
+      }
+      return grade;
     },
   },
 };
