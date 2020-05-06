@@ -60,7 +60,7 @@ export default {
         country.country.name.toLowerCase().includes(this.updateSearch)
       );
 
-      return filtered.sort((a, b) => a - b);
+      return filtered;
     },
   },
   methods: {

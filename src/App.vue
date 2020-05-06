@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <NavBar />
-    <router-view class="view" />
+    <transition name="slide" mode="out-in">
+      <router-view class="view" />
+    </transition>
     <Footer />
   </div>
 </template>
@@ -17,6 +19,16 @@ export default {
 </script>
 
 <style lang="scss">
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-40%);
+}
 * {
   box-sizing: border-box;
   margin: 0;

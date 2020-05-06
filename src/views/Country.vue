@@ -122,6 +122,11 @@ export default {
   }
   &__tile {
     pointer-events: none;
+    transform: scale(1.2);
+    margin-right: 30px;
+    @include tablet {
+      margin: 30px 0;
+    }
   }
   &__report {
     border: 1px solid black;

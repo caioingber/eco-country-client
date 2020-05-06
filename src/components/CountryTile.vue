@@ -32,7 +32,7 @@ a,
   border-radius: 100%;
 }
 .tile {
-  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   @include fill(250px, 250px);
   @include background(cover, center);
   @include flex(center, center, column);
@@ -41,8 +41,8 @@ a,
   position: relative;
   overflow: hidden;
   &:hover {
-    transform: scale(1.1) rotateZ(360deg);
-    transition: 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(1.05);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   &__overlay {
     @include fill(100%, 100%);

@@ -1,23 +1,37 @@
 <template>
   <div class="filter">
-    <input type="text" v-model="filter" placeholder="insert" />
-    <p>{{ search }}</p>
+    <label for=""
+      >Sort By
+      <select v-model="search">
+        <option value="name">Name</option>
+        <option value="name">Reserve</option>
+      </select>
+    </label>
+    <label for=""
+      >Order
+      <select v-model="order">
+        <option value="asc">&#8593;</option>
+        <option value="desc">&#8595;</option>
+      </select>
+    </label>
   </div>
 </template>
 
 <script>
 export default {
   name: "Search",
-  data() {},
-  computed: {
-    search: {
-      get() {
-        return this.$store.state.search;
-      },
-      set(value) {
-        this.$store.commit("updateSearch", value);
-      },
-    },
+  data() {
+    return {
+      sortBy: "name",
+      order: "asc",
+      search: "",
+    };
+  },
+  computed: {},
+  methods: {
+    resortOptions() {},
+    sortByNameAscending() {},
+    sortByNameDescending() {},
   },
 };
 </script>
