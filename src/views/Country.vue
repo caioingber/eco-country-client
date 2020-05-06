@@ -7,16 +7,32 @@
       <div class="country__report">
         <div class="category">Population</div>
         <div class="value">
-          {{ country.country.population }} <span>&#x2714; </span>
+          {{ country.country.population }}
         </div>
         <div class="category">GDP Per Capita ($USD)</div>
-        <div class="value">{{ country.gdpPerCapita }}</div>
+        <div class="value">
+          {{ country.gdpPerCapita }}
+          <span v-if="scoreGdp" class="pass">&#x2714; </span>
+          <span v-else class="fail"> &times;</span>
+        </div>
         <div class="category">HDI</div>
-        <div class="value">{{ country.hdi }}</div>
+        <div class="value">
+          {{ country.hdi }}
+          <span v-if="scoreHdi" class="pass">&#x2714;</span>
+          <span v-else class="fail"> &times;</span>
+        </div>
         <div class="category">Gini</div>
-        <div class="value">{{ country.country.gini }}</div>
+        <div class="value">
+          {{ country.country.gini }}
+          <span v-if="scoreGini" class="pass">&#x2714; </span>
+          <span v-else class="fail"> &times;</span>
+        </div>
         <div class="category">Biocapacity Reserve</div>
-        <div class="value">{{ country.biocapacityReserve }}</div>
+        <div class="value">
+          {{ country.biocapacityReserve }}
+          <span v-if="scoreBio" class="pass">&#x2714; </span>
+          <span v-else class="fail"> &times;</span>
+        </div>
       </div>
     </div>
     <router-link :to="back">back to region</router-link>
@@ -28,14 +44,6 @@ import CountryTile from "../components/CountryTile";
 export default {
   components: { CountryTile },
   name: "Country",
-  data() {
-    return {
-      giniScore: false,
-      gdpScore: false,
-      hdiScore: false,
-      bioScore: false,
-    };
-  },
   computed: {
     country() {
       let filtered = this.$store.state.countries.filter(
@@ -47,16 +55,34 @@ export default {
       return "/region/" + this.$route.params.region;
     },
     scoreGini() {
-      let gini = this.country.country.gini;
-      return gini > 7 ? true : false;
+      return this.country.country.gini > 50 ? true : false;
     },
-  },
-  methods: {
-    calculate(data) {
-      switch (data) {
-        case this.country.country.gini:
-          data > 0.7 ? (this.giniScore = true) : (this.giniScore = false);
-      }
+    scoreHdi() {
+      return this.country.hdi > 0.7 ? true : false;
+    },
+    scoreBio() {
+      return this.country.biocapacityReserve >= 0 ? true : false;
+    },
+    scoreGdp() {
+      let gdp = this.country.gdpPerCapita;
+      gdp = parseFloat(
+        gdp
+          .substring(1)
+          .split(",")
+          .join("")
+      );
+      return gdp > 17100 ? true : false;
+    },
+    grade() {
+      let categories = [
+        this.scoreGini,
+        this.scoreHdi,
+        this.scoreBio,
+        this.scoreGdp,
+      ];
+      let score = 0;
+      categories.forEach((cat) => (cat ? score++ : null));
+      return score;
     },
   },
 };
@@ -97,6 +123,19 @@ export default {
     }
     .value {
       grid-column: 4 / span 3;
+      .fail,
+      .pass {
+        padding-left: 5px;
+      }
+      .pass {
+        font-size: 20px;
+        color: green;
+      }
+      .fail {
+        font-size: 30px;
+        // padding-bottom: 5px;
+        color: red;
+      }
     }
   }
 }
