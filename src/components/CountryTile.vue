@@ -5,9 +5,9 @@
       :style="backgroundStyles(country.country.flag)"
       @mouseenter="hoverFlag"
       @mouseleave="hoverFlag"
+      :class="{ active: hover }"
     >
       <div class="tile__overlay"></div>
-      <div class="tile__slide"></div>
       <h3>{{ country.country.name }}</h3>
     </div>
   </router-link>
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       path: this.$route.fullPath + "/country/" + this.country.country.name,
-      active: false,
+      hover: false,
     };
   },
   methods: {
@@ -29,7 +29,7 @@ export default {
       };
     },
     hoverFlag() {
-      this.active = !this.active;
+      this.hover = !this.hover;
     },
   },
 };
@@ -43,7 +43,8 @@ a,
   border-radius: 100%;
 }
 .tile {
-  @include fill(250px, 300px);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @include fill(250px, 250px);
   @include background(cover, center);
   @include flex(center, center, column);
   margin: 10px;
@@ -54,16 +55,18 @@ a,
     @include fill(100%, 100%);
     position: absolute;
     background-color: rgba(0, 0, 0, 0.378);
-  }
-  &__slide {
-    @include fill(100%, 100%);
-    position: absolute;
-    top: -100%;
+    &:hover {
+      background-color: none;
+    }
   }
   h3 {
     color: #fff;
     text-shadow: 1px 1px $primary;
     z-index: 2;
   }
+}
+.active {
+  transform: rotateZ(360deg);
+  transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 </style>

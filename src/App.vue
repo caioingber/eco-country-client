@@ -9,7 +9,6 @@
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 export default {
-  data() {},
   components: { NavBar, Footer },
   created() {
     this.$store.dispatch("loadCountries");
