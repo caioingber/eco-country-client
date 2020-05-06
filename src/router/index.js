@@ -19,7 +19,7 @@ const routes = [
     component: Region,
   },
   {
-    path: "/region/:region/country/:country",
+    path: "/region/:region/country/:id",
     name: "Country",
     component: Country,
   },

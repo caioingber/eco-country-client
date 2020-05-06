@@ -11,7 +11,7 @@ export default {
   computed: {
     country() {
       let filtered = this.$store.state.countries.filter(
-        (country) => country.country.name == this.$route.params.country
+        (country) => country.id == this.$route.params.id
       );
       return filtered[0];
     },
@@ -22,4 +22,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.country {
+  padding: 30px 0;
+}
+</style>

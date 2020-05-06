@@ -1,16 +1,8 @@
 <template>
-  <router-link :to="path">
-    <div
-      class="tile"
-      :style="backgroundStyles(country.country.flag)"
-      @mouseenter="hoverFlag"
-      @mouseleave="hoverFlag"
-      :class="{ active: hover }"
-    >
-      <div class="tile__overlay"></div>
-      <h3>{{ country.country.name }}</h3>
-    </div>
-  </router-link>
+  <div class="tile" :style="backgroundStyles(country.country.flag)">
+    <div class="tile__overlay"></div>
+    <h3>{{ country.country.name }}</h3>
+  </div>
 </template>
 
 <script>
@@ -27,9 +19,6 @@ export default {
       return {
         "background-image": `url(${image})`,
       };
-    },
-    hoverFlag() {
-      this.hover = !this.hover;
     },
   },
 };
@@ -51,6 +40,10 @@ a,
   border: 2px solid $primary;
   position: relative;
   overflow: hidden;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
   &__overlay {
     @include fill(100%, 100%);
     position: absolute;
@@ -64,9 +57,5 @@ a,
     text-shadow: 1px 1px $primary;
     z-index: 2;
   }
-}
-.active {
-  transform: rotateZ(360deg);
-  transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 </style>

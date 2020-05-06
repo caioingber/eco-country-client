@@ -1,5 +1,6 @@
 <template>
   <section class="region">
+    <h2>{{ this.$route.params.region }}</h2>
     <div class="region__filters">
       <p>{{ regionCountries.length }} results</p>
       <button v-if="!deficit" v-on:click="toggleReserve">
@@ -11,11 +12,11 @@
       </button>
     </div>
     <div class="region__container">
-      <CountryTile
-        v-for="(location, i) in regionCountries"
-        :key="i"
-        :country="location"
-      />
+      <div v-for="location in regionCountries" :key="location.id">
+        <router-link :to="$route.fullPath + '/country/' + location.id">
+          <CountryTile :country="location" />
+        </router-link>
+      </div>
     </div>
   </section>
 </template>
@@ -55,9 +56,11 @@ export default {
       if (this.reserve) {
         filtered = filtered.filter((country) => country.biocapacityReserve > 0);
       }
-      return filtered.filter((country) =>
+      filtered = filtered.filter((country) =>
         country.country.name.toLowerCase().includes(this.updateSearch)
       );
+
+      return filtered.sort((a, b) => a - b);
     },
   },
   methods: {
@@ -80,7 +83,11 @@ export default {
 <style lang="scss" scoped>
 @import "@/global.scss";
 .region {
+  & > * {
+    margin-bottom: 20px;
+  }
   @include flex(flex-start, center, column);
+  padding: 30px 0;
   &__container {
     margin: 0 5%;
     @include flex(space-around, center, row);
