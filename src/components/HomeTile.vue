@@ -53,20 +53,23 @@ export default {
   @include flex(center, stretch, column);
   @include background(cover, center);
   color: #fff;
-  text-shadow: 2px 2px rgb(15, 67, 15);
+  text-shadow: 2px 2px $primary;
   min-height: 300px;
   border: 3px solid #000;
   position: relative;
+  overflow: hidden;
   &__overlay {
     @include fill(100%, 100%);
     position: absolute;
+    top: -100%;
     pointer-events: none;
     opacity: 0;
   }
   &__hover {
     opacity: 1;
-    transition: 0.25s;
-    background-color: rgba(0, 0, 0, 0.652);
+    transform: translateY(100%);
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: $primary-faded;
   }
 }
 </style>

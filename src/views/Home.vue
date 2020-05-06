@@ -48,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 @import "../global.scss";
 .home {
-  min-height: 80vh;
+  // min-height: 80vh;
   background-color: #000;
   @include grid(2, 3);
   @include tablet {

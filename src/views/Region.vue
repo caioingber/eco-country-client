@@ -1,18 +1,23 @@
 <template>
-  <div class="region">
-    <button v-if="!deficit" v-on:click="toggleReserve">
-      {{ reserveText }}
-    </button>
-    <input type="text" v-model="search" />
-    <button v-if="!reserve" v-on:click="toggleDeficit">
-      {{ deficitText }}
-    </button>
-    <CountryTile
-      v-for="(location, i) in regionCountries"
-      :key="i"
-      :country="location"
-    />
-  </div>
+  <section class="region">
+    <div class="region__filters">
+      <p>{{ regionCountries.length }} results</p>
+      <button v-if="!deficit" v-on:click="toggleReserve">
+        {{ reserveText }}
+      </button>
+      <input type="text" v-model="search" />
+      <button v-if="!reserve" v-on:click="toggleDeficit">
+        {{ deficitText }}
+      </button>
+    </div>
+    <div class="region__container">
+      <CountryTile
+        v-for="(location, i) in regionCountries"
+        :key="i"
+        :country="location"
+      />
+    </div>
+  </section>
 </template>
 
 <script>
@@ -72,4 +77,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "@/global.scss";
+.region {
+  @include flex(flex-start, center, column);
+  &__container {
+    margin: 0 5%;
+    @include flex(space-around, center, row);
+    flex-wrap: wrap;
+  }
+}
+</style>

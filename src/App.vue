@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <div id="nav"><router-link to="/">Home</router-link> |</div>
-    <router-view />
+    <NavBar />
+    <router-view class="view" />
+    <Footer />
   </div>
 </template>
 <script>
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 export default {
   data() {},
+  components: { NavBar, Footer },
   created() {
     this.$store.dispatch("loadCountries");
   },
@@ -20,16 +24,13 @@ export default {
 }
 #app {
   font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  .view {
+    min-height: 85vh;
+  }
 }
 a {
   color: #000;
   text-decoration: none;
-}
-
-#nav {
-  padding: 30px;
 }
 </style>

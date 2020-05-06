@@ -1,3 +1,6 @@
+$primary: rgb(15, 67, 15);
+$primary-faded: rgb(15, 67, 15, 0.7);
+
 @mixin flex($justify, $align, $direction) {
   display: flex;
   justify-content: $justify;
@@ -11,12 +14,6 @@
   grid-template-columns: repeat($columns, 1fr);
 }
 
-@mixin tablet {
-  @media screen and (max-width: 800px) {
-    @content;
-  }
-}
-
 @mixin background($size, $position) {
   background-size: $size;
   background-position: $position;
@@ -25,6 +22,12 @@
 @mixin fill($height, $width) {
   height: $height;
   width: $width;
+}
+
+@mixin tablet {
+  @media screen and (max-width: 800px) {
+    @content;
+  }
 }
 
 @mixin mobile {
