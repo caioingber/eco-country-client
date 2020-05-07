@@ -16,7 +16,7 @@ export default new Vuex.Store({
   actions: {
     loadCountries({ commit }) {
       axios
-        .get("http://localhost:8000/ecos")
+        .get("https://eco-country-api.herokuapp.com/ecos")
         .then((res) => commit("setCountries", res.data));
     },
   },
