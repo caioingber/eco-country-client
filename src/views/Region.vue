@@ -11,7 +11,7 @@
         >
           {{ reserveText }}
         </button>
-        <input type="text" v-model="search" />
+        <input type="text" v-model="search" placeholder="Search..." />
         <button
           v-on:click="toggleDeficit"
           class="deficit"
@@ -95,7 +95,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/global.scss";
 .container {
-  @include flex(center, center, column);
+  @include flex(flex-start, center, column);
 }
 .region {
   &__filters {

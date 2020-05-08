@@ -48,7 +48,7 @@ a,
   position: relative;
 
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
     transition: 0.3s ease-in;
   }
   &__overlay {

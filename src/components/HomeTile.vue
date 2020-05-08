@@ -6,7 +6,10 @@
       v-on:mouseover="over"
       v-on:mouseleave="over"
     >
-      <div class="tile__overlay" :class="{ tile__hover: hover }"></div>
+      <div
+        class="tile__overlay"
+        :class="{ tile__hover: hover, tile__remove: !hover }"
+      ></div>
       <h1>{{ region.name }}</h1>
     </div>
   </router-link>
@@ -63,12 +66,15 @@ export default {
     position: absolute;
     top: -100%;
     pointer-events: none;
-    opacity: 0;
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   &__hover {
-    opacity: 1;
     transform: translateY(100%);
     transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: $primary-faded;
+  }
+  &__remove {
+    transform: translateY(-100%);
     background-color: $primary-faded;
   }
 }

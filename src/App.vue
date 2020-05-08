@@ -22,7 +22,7 @@ export default {
 @import "@/global.scss";
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.6s, transform 0.6s;
+  transition: opacity 0.4s, transform 0.4s;
 }
 
 .fade-leave-active,
