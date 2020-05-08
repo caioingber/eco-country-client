@@ -19,10 +19,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/global.scss";
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.6s, transform 0.6s;
-  // position: absolute;
 }
 
 .fade-leave-active,
@@ -43,6 +43,7 @@ export default {
   text-align: center;
   .view {
     min-height: 85vh;
+    background-color: $background;
   }
 }
 a {

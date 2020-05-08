@@ -1,39 +1,43 @@
 <template>
-  <section class="region">
-    <h2>{{ this.$route.params.region }}</h2>
-    <div class="region__filters">
-      <button
-        v-on:click="toggleReserve"
-        class="reserve"
-        :class="{ inactive: deficit }"
-      >
-        {{ reserveText }}
-      </button>
-      <input type="text" v-model="search" />
-      <button
-        v-on:click="toggleDeficit"
-        class="deficit"
-        :class="{ inactive: reserve }"
-      >
-        {{ deficitText }}
-      </button>
-      <p>{{ regionCountries.length }} results</p>
-    </div>
-    <div class="region__container">
-      <div v-for="location in regionCountries" :key="location.id">
-        <router-link :to="$route.fullPath + '/country/' + location.id">
-          <CountryTile :country="location" />
-        </router-link>
+  <section class="container">
+    <Loading v-if="$store.state.countries.length <= 0">Testing</Loading>
+    <div v-else class="region">
+      <h2>{{ this.$route.params.region }}</h2>
+      <div class="region__filters">
+        <button
+          v-on:click="toggleReserve"
+          class="reserve"
+          :class="{ inactive: deficit }"
+        >
+          {{ reserveText }}
+        </button>
+        <input type="text" v-model="search" />
+        <button
+          v-on:click="toggleDeficit"
+          class="deficit"
+          :class="{ inactive: reserve }"
+        >
+          {{ deficitText }}
+        </button>
+        <p>{{ regionCountries.length }} results</p>
+      </div>
+      <div class="region__container">
+        <div v-for="location in regionCountries" :key="location.id">
+          <router-link :to="$route.fullPath + '/country/' + location.id">
+            <CountryTile :country="location" />
+          </router-link>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import Loading from "../components/Loading.vue";
 import CountryTile from "@/components/CountryTile.vue";
 export default {
   name: "Region",
-  components: { CountryTile },
+  components: { CountryTile, Loading },
   data() {
     return {
       search: "",
@@ -90,6 +94,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/global.scss";
+.container {
+  @include flex(center, center, column);
+}
 .region {
   &__filters {
     p {
@@ -111,6 +118,7 @@ export default {
     font-size: 16px;
     margin: 0 5px;
     border: 2px solid gray;
+    background-color: $light;
     border-radius: 5px;
     @include mobile {
       width: 45%;

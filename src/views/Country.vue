@@ -129,6 +129,7 @@ export default {
   &__tile {
     pointer-events: none;
     transform: scale(1.2);
+    font-size: 20px;
     margin-right: 50px;
     @include tablet {
       margin: 50px 0;

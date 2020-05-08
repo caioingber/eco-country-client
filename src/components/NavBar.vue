@@ -21,7 +21,7 @@ nav {
     color: #fff;
     font-size: 25px;
     &:hover {
-      color: rgb(22, 179, 22);
+      color: $secondary;
       transition: 0.2s ease-in;
     }
     @include mobile {

@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Region from "../views/Region.vue";
 import Country from "../views/Country.vue";
 import Search from "../components/Search.vue";
+import Loading from "../components/Loading.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: "/search",
     name: "Search",
     component: Search,
+  },
+  {
+    path: "/loading",
+    name: "Loading",
+    component: Loading,
   },
 ];
 
