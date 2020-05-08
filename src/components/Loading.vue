@@ -23,6 +23,7 @@ export default {
 }
 .loading {
   @include flex(center, center, column);
+  margin-top: 100px;
   img {
     margin-top: 25px;
     height: 150px;
