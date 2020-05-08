@@ -29,7 +29,12 @@ export default {
   },
   computed: {},
   methods: {
-    resortOptions() {},
+    // resortOptions(by) {
+    //   if (by == this.sortBy) {
+    //     if (this.order == "asc") {
+    //     }
+    //   }
+    // },
     sortByNameAscending() {},
     sortByNameDescending() {},
   },

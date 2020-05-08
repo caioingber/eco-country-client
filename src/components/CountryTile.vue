@@ -1,7 +1,9 @@
 <template>
-  <div class="tile" :style="backgroundStyles(country.country.flag)">
-    <div class="tile__overlay"></div>
-    <h3>{{ country.country.name }}</h3>
+  <div class="container">
+    <div class="tile" :style="backgroundStyles(country.country.flag)">
+      <div class="tile__overlay"></div>
+      <h3>{{ country.country.name }}</h3>
+    </div>
   </div>
 </template>
 
@@ -26,23 +28,27 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/global.scss";
+.container,
 a,
 .tile,
 .tile__overlay {
   border-radius: 100%;
 }
+.container {
+  overflow: hidden;
+  margin: 10px;
+  box-shadow: $shadow;
+}
 .tile {
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.25s ease-out;
   @include fill(250px, 250px);
   @include background(cover, center);
   @include flex(center, center, column);
-  margin: 10px;
-  border: 2px solid $primary;
   position: relative;
-  overflow: hidden;
+
   &:hover {
-    transform: scale(1.05);
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(1.2);
+    transition: 0.4s ease-in;
   }
   &__overlay {
     @include fill(100%, 100%);

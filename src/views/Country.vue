@@ -34,7 +34,9 @@
           <span v-else class="fail"> &times;</span>
         </div>
         <div class="category">Grade:</div>
-        <div class="value grade" :style="styleGrade">{{ grade }}</div>
+        <div class="value grade" :class="{ grade__fail: styleGrade }">
+          {{ grade }}
+        </div>
       </div>
     </div>
     <router-link :to="back">back to region</router-link>
@@ -43,6 +45,7 @@
 
 <script>
 import CountryTile from "../components/CountryTile";
+import "@/global.scss";
 export default {
   components: { CountryTile },
   name: "Country",
@@ -96,13 +99,11 @@ export default {
       return grade;
     },
     styleGrade() {
-      let style;
+      let fail;
       if (this.grade == "D" || this.grade == "F") {
-        style = {
-          color: "red",
-        };
+        fail = true;
       }
-      return style;
+      return fail;
     },
   },
 };
@@ -113,6 +114,11 @@ export default {
 .country {
   // padding: 30px 0;
   @include flex(center, center, column);
+  a {
+    display: block;
+    @include button(10px, rgb(26, 26, 220));
+    margin: 50px 0;
+  }
   &__card {
     @include flex(center, center, row);
     width: 100%;
@@ -123,13 +129,17 @@ export default {
   &__tile {
     pointer-events: none;
     transform: scale(1.2);
-    margin-right: 30px;
+    margin-right: 50px;
     @include tablet {
-      margin: 30px 0;
+      margin: 50px 0;
+    }
+    @include mobile {
+      transform: scale(1);
     }
   }
   &__report {
-    border: 1px solid black;
+    border: 1px solid $primary;
+    box-shadow: $shadow;
     @include mobile {
       width: 90%;
     }
@@ -140,7 +150,7 @@ export default {
     @include grid(6, 6);
     & > * {
       @include flex(center, center, row);
-      border: 1px solid black;
+      border: 1px solid $primary;
       padding: 0.5em;
     }
     .category {
@@ -154,18 +164,20 @@ export default {
       }
       .pass {
         font-size: 20px;
-        color: green;
+        color: $secondary;
       }
       .fail {
         font-size: 30px;
-        // padding-bottom: 5px;
-        color: red;
+        color: $danger;
       }
     }
     .grade {
-      color: green;
+      color: $secondary;
       font-weight: 700;
       font-size: 20px;
+      &__fail {
+        color: $danger;
+      }
     }
   }
 }

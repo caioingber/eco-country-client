@@ -1,5 +1,8 @@
-$primary: rgb(15, 67, 15);
+$primary: rgb(15, 80, 15);
 $primary-faded: rgb(15, 67, 15, 0.7);
+$secondary: rgb(50, 179, 71);
+$danger: rgb(225, 36, 36);
+$shadow: 4px 4px 4px gray;
 
 @mixin flex($justify, $align, $direction) {
   display: flex;
@@ -22,6 +25,23 @@ $primary-faded: rgb(15, 67, 15, 0.7);
 @mixin fill($height, $width) {
   height: $height;
   width: $width;
+}
+
+@mixin button($size, $color) {
+  border-radius: 10px;
+  padding: $size;
+  border: 2px solid $color;
+  background-color: #fff;
+  color: $color;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: 0.1s ease-out;
+  cursor: pointer;
+  &:hover {
+    transition: 0.1s ease-in;
+    background-color: $color;
+    color: #fff;
+  }
 }
 
 @mixin tablet {

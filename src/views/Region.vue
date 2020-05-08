@@ -2,14 +2,22 @@
   <section class="region">
     <h2>{{ this.$route.params.region }}</h2>
     <div class="region__filters">
-      <p>{{ regionCountries.length }} results</p>
-      <button v-if="!deficit" v-on:click="toggleReserve">
+      <button
+        v-on:click="toggleReserve"
+        class="reserve"
+        :class="{ inactive: deficit }"
+      >
         {{ reserveText }}
       </button>
       <input type="text" v-model="search" />
-      <button v-if="!reserve" v-on:click="toggleDeficit">
+      <button
+        v-on:click="toggleDeficit"
+        class="deficit"
+        :class="{ inactive: reserve }"
+      >
         {{ deficitText }}
       </button>
+      <p>{{ regionCountries.length }} results</p>
     </div>
     <div class="region__container">
       <div v-for="location in regionCountries" :key="location.id">
@@ -83,6 +91,31 @@ export default {
 <style lang="scss" scoped>
 @import "@/global.scss";
 .region {
+  &__filters {
+    p {
+      margin-top: 10px;
+    }
+    .deficit {
+      @include button(10px, $danger);
+    }
+    .reserve {
+      @include button(10px, $secondary);
+    }
+    .inactive {
+      pointer-events: none;
+      opacity: 0;
+    }
+  }
+  input {
+    padding: 10px;
+    font-size: 16px;
+    margin: 0 5px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    @include mobile {
+      width: 45%;
+    }
+  }
   & > * {
     margin-bottom: 20px;
   }
