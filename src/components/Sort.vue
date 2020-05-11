@@ -38,7 +38,7 @@ export default {
         this.$store.dispatch("updateOrder", order);
       },
       get() {
-        return this.$store.getters.order;
+        return this.$store.getters.getOrder;
       },
     },
   },
