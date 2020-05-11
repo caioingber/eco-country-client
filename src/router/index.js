@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Region from "../views/Region.vue";
 import Country from "../views/Country.vue";
-import Search from "../components/Search.vue";
 
 Vue.use(VueRouter);
 
@@ -22,11 +21,6 @@ const routes = [
     path: "/region/:region/country/:id",
     name: "Country",
     component: Country,
-  },
-  {
-    path: "/search",
-    name: "Search",
-    component: Search,
   },
 ];
 

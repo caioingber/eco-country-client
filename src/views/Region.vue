@@ -21,6 +21,7 @@
         </button>
         <p>{{ regionCountries.length }} results</p>
       </div>
+      <Sort />
       <div class="region__container">
         <div v-for="location in regionCountries" :key="location.id">
           <router-link :to="$route.fullPath + '/country/' + location.id">
@@ -34,10 +35,11 @@
 
 <script>
 import Loading from "../components/Loading.vue";
-import CountryTile from "@/components/CountryTile.vue";
+import CountryTile from "../components/CountryTile.vue";
+import Sort from "../components/Sort";
 export default {
   name: "Region",
-  components: { CountryTile, Loading },
+  components: { CountryTile, Loading, Sort },
   data() {
     return {
       search: "",
