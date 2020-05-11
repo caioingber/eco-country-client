@@ -112,6 +112,34 @@ export default new Vuex.Store({
             }
           });
           break;
+        case "hdi":
+          countries.sort((a, b) => {
+            if (data.direction == "asc") {
+              return a.hdi == b.hdi ? 0 : a.hdi > b.hdi ? 1 : -1;
+            }
+            if (data.direction == "desc") {
+              return a.hdi == b.hdi ? 0 : a.hdi < b.hdi ? 1 : -1;
+            }
+          });
+          break;
+        case "population":
+          countries.sort((a, b) => {
+            if (data.direction == "asc") {
+              return a.country.population == b.country.population
+                ? 0
+                : a.country.population > b.country.population
+                ? 1
+                : -1;
+            }
+            if (data.direction == "desc") {
+              return a.country.population == b.country.population
+                ? 0
+                : a.country.population < b.country.population
+                ? 1
+                : -1;
+            }
+          });
+          break;
         case "gdp":
           countries.sort((a, b) => {
             let gdpA = a.gdpPerCapita;

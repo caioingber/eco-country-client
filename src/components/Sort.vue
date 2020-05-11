@@ -7,6 +7,8 @@
         <option value="reserve">Bio Reserve</option>
         <option value="gdp">GDP Per Capita</option>
         <option value="gini">Gini</option>
+        <option value="hdi">HDI</option>
+        <option value="population">Population</option>
       </select>
     </label>
     <label for=""
