@@ -2,7 +2,7 @@
   <section class="container">
     <Loading v-if="$store.state.countries.length <= 0"></Loading>
     <div v-else class="region">
-      <h2>{{ this.$route.params.region }}</h2>
+      <h1>{{ this.$route.params.region }}</h1>
       <div class="region__filters">
         <button
           v-on:click="toggleReserve"
